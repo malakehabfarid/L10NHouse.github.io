@@ -154,6 +154,16 @@ section:not(#Language_Sectors):hover .title::after {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 1300px) {
+  .popup[data-popup-name=services] .box .body .row {
+    flex-direction: column-reverse;
+  }
+}
+@media (min-width: 577px) and (max-width: 1300px) {
+  .popup[data-popup-name=services] .box .body .row {
+    flex-direction: row;
+  }
+}
 .popup[data-popup-name=sectors] .item {
   background-color: #ebfbee;
 }
@@ -851,13 +861,27 @@ nav.navbar.scrolled .navbar-brand {
 #Language_Sectors .part1 .container .content .buttons button:hover {
   transform: translateY(-8px);
 }
+#Language_Sectors .part2 .content .owl-carousel .owl-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #Language_Sectors .part2 .content img {
   width: 65%;
   margin: auto;
 }
-#Language_Sectors .part2 .content span {
+#Language_Sectors .part2 .content button.active span {
   background: 0;
   background-color: #EE5E00;
+  opacity: 1;
+}
+#Language_Sectors .part2 .content button span {
+  background: 0;
+  background-color: #EE5E00;
+  opacity: 0.5;
+}
+#Language_Sectors .part2 .content .owl-theme .owl-nav.disabled + .owl-dots {
+  padding-top: 25px;
 }
 
 #ContactUs {

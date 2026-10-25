@@ -130,6 +130,20 @@ section:not(#Language_Sectors) {
             }
         }
     }
+    &[data-popup-name="services"] {
+        .box {
+            .body {
+                .row {
+                    @include respond(350){
+                        flex-direction: column-reverse;
+                    }
+                    @include respond(650){
+                        flex-direction: row;
+                    }
+                }
+            }
+        }
+    }
     &[data-popup-name="sectors"] {
         .item {
             background-color: #ebfbee;

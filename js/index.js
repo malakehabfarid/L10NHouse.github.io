@@ -3,7 +3,6 @@ let services = null;
 (async function () {
     let res = await fetch("https://semicode.tech/api/v1/l10nhouse/services");
     services = await res.json();
-    console.log(services);
     let i = 0;
     services.forEach(function (service) {
         $("#Services .row").append(`
@@ -22,7 +21,6 @@ let services = null;
 (async function () {
     let res = await fetch("https://semicode.tech/api/v1/l10nhouse/sectors");
     sectors = await res.json();
-    console.log(sectors);
     let i = 0;
     sectors.forEach(function (sector) {
         $(".popup[data-popup-name='sectors'] .body .row ").append(`
@@ -40,7 +38,6 @@ let services = null;
 (async function () {
     let res = await fetch("https://semicode.tech/api/v1/l10nhouse/languages");
     languages = await res.json();
-    console.log(languages);
     let i = 0;
     languages.forEach(function (language) {
         $(".popup[data-popup-name='languages'] .body").append(`

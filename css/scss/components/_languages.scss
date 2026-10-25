@@ -41,13 +41,29 @@
     }
     .part2 {
         .content {
+            .owl-carousel .owl-stage {
+                @include flex();
+            }
             img {
                 width: 65%;
                 margin: auto;
             }
-            span {
-                background: 0;
-                background-color: $secondColor;
+            button.active {
+                span {
+                    background: 0;
+                    background-color: $secondColor;
+                    opacity: 1;
+                }
+            }
+            button {
+                span {
+                    background: 0;
+                    background-color: $secondColor;
+                    opacity: 0.5;
+                }
+            }
+            .owl-theme .owl-nav.disabled + .owl-dots {
+                padding-top: 25px;
             }
         }
     }
