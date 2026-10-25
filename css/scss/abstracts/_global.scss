@@ -1,0 +1,229 @@
+@use "./variables" as *;
+@use "./mixin" as *;
+body {
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
+    overflow-x: hidden;
+}
+p {
+    color: #555;
+}
+.firstColor {
+    color: $firstColor;
+}
+.secondColor {
+    color: $secondColor;
+}
+.title {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    font-size: clamp(14px, 2vw, 16px);
+    &::after {
+        background-color: $secondColor;
+        @include createEle($w: 30%, $h: 4px);
+        @include position($l: 50%, $b: -20%);
+        transform: translateX(-50%);
+        border-radius: 10px;
+        transition-duration: 0.5s;
+    }
+}
+.title.whiteTitle {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    color: #fff;
+    font-size: clamp(14px, 2vw, 16px);
+    &::after {
+        background-color: #fff;
+        @include createEle($w: 30%, $h: 4px);
+        @include position($l: 50%, $b: -20%);
+        transform: translateX(-50%);
+        border-radius: 10px;
+        transition-duration: 0.5s;
+    }
+}
+section:not(#Language_Sectors) {
+    &:hover {
+        .title::after {
+            width: 75%;
+        }
+    }
+}
+#Language_Sectors {
+    .part1 {
+        &:hover {
+            .title::after {
+                width: 75%;
+            }
+        }
+    }
+    .part2 {
+        &:hover {
+            .title::after {
+                width: 75%;
+            }
+        }
+    }
+}
+.popup {
+    @include position($p: fixed, $t: 0, $l: 0, $z: 100);
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    display: none;
+    .box {
+        background-color: #fff;
+        width: 75%;
+        margin: 20px auto;
+        @include respond(350) {
+            width: 85%;
+        }
+        .head {
+            position: relative;
+            border-bottom: 1px solid #999;
+            i {
+                @include position($t: 15px, $r: 15px);
+                font-size: 14px;
+                cursor: pointer;
+            }
+        }
+        .body {
+            h4 {
+                font-size: clamp(18px, 2vw, 25px);
+            }
+            section {
+                h5 {
+                    font-size: clamp(16px, 2vw, 18px);
+                }
+                ol {
+                    li {
+                        &::marker {
+                            color: $secondColor;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &:nth-of-type(2) {
+        justify-content: center;
+        align-items: center;
+        .box {
+            @include distance($w: 800px, $h: 400px);
+            border-radius: 10px;
+            overflow: hidden;
+            @include respond(350) {
+                @include distance($w: 90%, $h: 200px);
+            }
+            @include respond(450) {
+                @include distance($w: 90%, $h: 300px);
+            }
+            @include respond(650) {
+                @include distance($w: 500px, $h: 350px);
+            }
+            iframe {
+                @include distance($w: 100%, $h: 100%);
+            }
+        }
+    }
+    &[data-popup-name="sectors"] {
+        .item {
+            background-color: #ebfbee;
+            img {
+                width: 65px;
+            }
+            p {
+                background-color: rgb(223, 238, 226);
+                color: rgb(0, 0, 0);
+                font-size: 13px;
+            }
+        }
+    }
+    &[data-popup-name="languages"] {
+        overflow-x: hidden;
+        .box {
+            margin: auto;
+            border-radius: 10px 0px 0px 10px;
+            @include position($t: 0, $r: -100%);
+            width: 40%;
+            transition-duration: 0.8s;
+            > i {
+                @include position($t: 10px, $r: 10px);
+                font-size: 14px;
+                cursor: pointer;
+            }
+            .section:nth-of-type(odd) {
+                h4 {
+                    color: $firstColor;
+                    // &::after {
+                    //     @include createEle($w: 80px, $h: 3px);
+                    //     background-color: $firstColor;
+                    //     @include position($b: -5px, $l 0);
+                    // }
+                }
+                i {
+                    color: $firstColor;
+                }
+            }
+            .section:nth-of-type(even) {
+                h4 {
+                    color: $secondColor;
+                    // &::after {
+                    //     @include createEle(80px, 3px);
+                    //     background-color: $secondColor;
+                    //     @include position($b: -5px, $l 0);
+                    // }
+                }
+                i {
+                    color: $secondColor;
+                }
+            }
+            &.show {
+                right: 0;
+            }
+        }
+    }
+}
+.scroll-progress {
+    @include position($p: fixed, $t: 0, $l: 0);
+    height: 4px;
+    width: 0%;
+    background-color: $secondColor;
+    z-index: 50;
+    transition: width 0.1s linear;
+}
+.loadingPage {
+    @include position($p: fixed, $t: 0, $l: 0, $z: 200);
+    @include distance(100%, 100%);
+    background: #ada996;
+    background: -webkit-linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+    background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+    @include flex();
+    flex-direction: row;
+    .box {
+        @include distance(200px, 200px);
+        img {
+            animation: loadingImage 1.5s linear infinite;
+        }
+    }
+}
+#Top {
+    color: #fff;
+    @include flex();
+    flex-direction: row;
+    @include position($p: fixed, $t: 50%, $r: -52px, $z: 80);
+    font-size: 14px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: $firstColor;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    &:hover {
+        right: 0;
+    }
+}

@@ -1,0 +1,124 @@
+@use "./../abstracts/index" as *;
+nav.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    transition-duration: 0.5s;
+    .navbar-brand {
+        width: 12%;
+        transition-duration: 0.5s;
+        @include respond(350) {
+            width: 30%;
+        }
+        @include respond(450) {
+            width: 25%;
+        }
+        @include respond(650) {
+            width: 20%;
+        }
+        @include respond(850) {
+            width: 15%;
+        }
+        @include respond(1050) {
+            width: 12%;
+        }
+    }
+    .nav-link {
+        color: $firstColor;
+        font-weight: 600;
+        position: relative;
+        &.active {
+            color: $firstColor;
+        }
+        &::after {
+            @include createEle($w: 0%, $h: 2px);
+            background-color: $secondColor;
+            position: absolute;
+            left: 50%;
+            bottom: -50%;
+            transform: translate(-50%, -50%);
+            transition-duration: 0.5s;
+        }
+        &:hover::after,
+        &.active::after {
+            width: 100%;
+        }
+    }
+    .navbar-nav {
+        @include respond(350) {
+            text-align: center;
+        }
+    }
+    .navbar-nav {
+        .nav-link.active,
+        .nav-link.show {
+            color: $firstColor;
+        }
+    }
+    .navbar-collapse {
+        @include respond(350) {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            flex-grow: 1;
+            flex-basis: auto;
+            align-items: center;
+        }
+        @include respond(450) {
+            width: 300px;
+            flex-grow: 0;
+            margin: auto;
+        }
+        @include respond(650) {
+            flex-basis: 75%;
+        }
+        @include respond(850) {
+            flex-basis: 75%;
+            flex-grow: 0;
+        }
+        @include respond(1050) {
+            background-color: transparent;
+            flex-grow: 1;
+            flex-basis: 100%;
+        }
+    }
+    .navbar-toggler:focus {
+        box-shadow: none;
+        border-color: $firstColor;
+    }
+    @include respond(350) {
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 35%;
+        }
+    }
+    @include respond(1050) {
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+    }
+    &.scrolled {
+        background-color: #fff;
+        .navbar-brand {
+            width: 8%;
+            @include respond(350) {
+                width: 25%;
+            }
+            @include respond(450) {
+                width: 22%;
+            }
+            @include respond(650) {
+                width: 18%;
+            }
+            @include respond(850) {
+                width: 12%;
+            }
+            @include respond(1050) {
+                width: 10%;
+            }
+        }
+    }
+}

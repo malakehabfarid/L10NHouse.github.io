@@ -1,0 +1,47 @@
+@keyframes animateArrow1 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes animateArrow2 {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+@keyframes animateArrow3 {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(35px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+}
+@keyframes loadingImage {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}

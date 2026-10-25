@@ -1,0 +1,70 @@
+@use "./../abstracts/index" as *;
+#WhyUs {
+    .container .row {
+        .col-lg-4 {
+            .item {
+                background-color: $secondColor;
+                @include distance($w: 350px, $h: 450px);
+                @include respond(350){
+                    @include distance($w: 280px, $h: 450px);
+                }
+                @include respond(450){
+                    @include distance($w: 300px, $h: 450px);
+                }
+                @include respond(650){
+                    @include distance($w: 320px, $h: 450px);
+                }
+                @include respond(1050){
+                    @include distance($w: 300px, $h: 450px);
+                }
+                margin: auto;
+                .box {
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    @include distance($w: 100%, $h: 100%);
+                    @include flex(flex-end, flex-start);
+                    flex-direction: column;
+                    overflow: hidden;
+                    padding: 20px;
+                    position: relative;
+                    transition-duration: 0.5s;
+                    &::before {
+                        @include createEle(100%, 100%);
+                        @include position($t: 0, $l: 0);
+                        background: linear-gradient(0deg, #1e2022 0%, transparent 75%);
+                    }   
+                }
+                &:hover {
+                    .box {
+                        transform: translate(-10px, 10px);
+                    }
+                }
+                .desc {
+                    position: relative;
+                }
+            }
+        }
+        .col-lg-4:nth-of-type(1) {
+            .item {
+                .box {
+                    background-image: url("../images/best.jpg");
+                }
+            }
+        }
+        .col-lg-4:nth-of-type(2) {
+            .item {
+                .box {
+                    background-image: url("../images/solutions.jpg");
+                }
+            }
+        }
+        .col-lg-4:nth-of-type(3) {
+            .item {
+                .box {
+                    background-image: url("../images/teamwork.jpg");
+                }
+            }
+        }
+    }
+}

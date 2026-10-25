@@ -1,0 +1,110 @@
+@use "./../abstracts/index" as *;
+#Home {
+    height: 100vh;
+    .part1 {
+        @include flex(flex-start);
+        @include respond(350){
+            @include flex($jc: flex-start, $ai: flex-end);
+        }
+        @include respond(850){
+            @include flex(flex-start);
+        }
+        h1 {
+            color: $firstColor;
+            font-size: clamp(35px,7vw,65px);
+        }
+        p {
+            font-size: clamp(14px,2vw,16px);
+        }
+        .cd-intro {
+            .cd-headline {
+                font-size: clamp(16px,3vw,20px);
+                text-align: left;
+                font-weight: 500;
+                color: $secondColor;
+                &.clip .cd-words-wrapper::after {
+                    background-color: $secondColor;
+                }
+            }
+        }
+        .videoIcon {
+            a {
+                background-color: transparent;
+                color: $firstColor;
+                @include distance(45px, 45px);
+                @include flex();
+                border-radius: 50%;
+                @include position($p: relative);
+                &::before {
+                    @include createEle(0%, 0%);
+                    border-radius: 50%;
+                    background-color: $firstColor;
+                    @include position($t: 50%, $l: 50%);
+                    transform: translate(-50%, -50%);
+                    transition-duration: 0.5s;
+                }
+                i {
+                    @include position($t: 50%, $l: 50%);
+                    transform: translate(-50%, -50%);
+                    transition-duration: 0.5s;
+                }
+                &:hover {
+                    &::before {
+                        @include createEle(100%, 100%);
+                    }
+                    i {
+                        color: $secondColor;
+                    }
+                }
+            }
+            p {
+                font-weight: 500;
+            }
+        }
+    }
+    .part2 {
+        @include flex();
+        @include respond(350){
+            .item {
+                width: 280px;
+                margin: auto;
+            }
+        }
+        @include respond(650){
+            .item {
+                width: 300px;
+            }
+        }
+        @include respond(850){
+            .item {
+                width: 320px;
+            }
+        }
+    }
+    .arrow {
+        @include position($b: 10%, $l: 50%, $z: 5);
+        transform: translateX(-50%);
+        img:not(:first-child) {
+            @include position($t: 0, $l: 0);
+        }
+        img {
+            @include distance($w: 20px, $h: 20px);
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}){
+                    animation: animateArrow#{$i} 2s infinite;
+                }
+            }
+            &:nth-of-type(2){
+                transform: translateY(20px);
+            }
+            &:nth-of-type(3){
+                transform: translateY(35px);
+            }
+        }
+    }
+    >img {
+        @include position($b: 0, $l: 0);
+        width: 100%;
+        transform: rotateX(180deg);
+    }
+}
