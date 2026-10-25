@@ -5,6 +5,26 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background-color: #719F3D;
+  color: #fff;
+}
+
+.firstColor::selection {
+  background-color: #EE5E00;
+  color: #fff;
+}
+
+.secondColor::selection {
+  background-color: #719F3D;
+  color: #fff;
+}
+
+.title.whiteTitle::selection {
+  background-color: #EE5E00;
+  color: #fff;
+}
+
 p {
   color: #555;
 }
